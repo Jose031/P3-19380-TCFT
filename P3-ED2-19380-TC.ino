@@ -84,6 +84,31 @@ extern uint8_t fondo1[]; // definición de arreglo que permite imprimir la porta
 //**********************************************************************************************************************
 // Configuracion
 //**********************************************************************************************************************
+void setup() {
+  Serial.begin(115200); // Velocidad de la comunicación serial del canal 0.
+  Serial2.begin(115200); // Velocidad de la comunicación serial del canal 2.
+  //Definicion de entradas
+  pinMode(btn1, INPUT_PULLUP);
+  pinMode(btn2, INPUT_PULLUP);
+
+  //Configuracion SD
+  // Pin de SS (Puede ser cualquier pin)
+  pinMode(PA_3, OUTPUT);
+  SPI.setModule(0); // Definción del módulo SPI
+  // Estamos Inicializando la tarjeta SD
+  if (!SD.begin(PA_3)) {
+    Serial.println("initialization failed!");
+    return;
+  }
+  //Configuración LCD----------------------------
+  SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
+  GPIOPadConfigSet(GPIO_PORTB_BASE, 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7, GPIO_STRENGTH_8MA, GPIO_PIN_TYPE_STD_WPU);
+  Serial.println("Inicio");
+  LCD_Init();
+  LCD_Bitmap(0, 0, 320, 240, fondo1);
+
+
+}
 //**********************************************************************************************************************
 // LOOP
 //**********************************************************************************************************************
