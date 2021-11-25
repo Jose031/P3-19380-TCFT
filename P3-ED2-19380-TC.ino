@@ -51,6 +51,26 @@ int buzzerPin = PC_4;
 //**********************************************************************************************************************
 // Prototipo de Funciones
 //**********************************************************************************************************************
+void BPM1(void); // Función encargada de recibir el valor del sensor de BPM enviado por el ESP32.
+void btnleer(void); // Función encargada de alamacenar el valor BPM en la memoria SD mediante el botón 2.
+void writeSD(void); // Función encargada de escribri y almacenar el valor BPM en la memoria SD mediante el botón 2.
+void LCDD(void); // Función con la cual se establece el dieseño que tendra la pantalla SD.
+void Sonido1(void); // Función que establece el sonido buzzer cuando se lea un valor con el botón 1.
+void Sonido2(void); // Función que establece el sonido buzzer cuando se lea un valor con el botón 2.
+//------------------ Funciones que permiten el funcionamiento de la pantalla LCD ------------------------------------
+void LCD_Init(void);
+void LCD_CMD(uint8_t cmd);
+void LCD_DATA(uint8_t data);
+void SetWindows(unsigned int x1, unsigned int y1, unsigned int x2, unsigned int y2);
+void LCD_Clear(unsigned int c);
+void H_line(unsigned int x, unsigned int y, unsigned int l, unsigned int c);
+void V_line(unsigned int x, unsigned int y, unsigned int l, unsigned int c);
+void Rect(unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsigned int c);
+void FillRect(unsigned int x, unsigned int y, unsigned int w, unsigned int h, unsigned int c);
+void LCD_Print(String text, int x, int y, int fontSize, int color, int background);
+void LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);
+void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[], int columns, int index, char flip, char offset);
+
 //**********************************************************************************************************************
 // Variables Globales
 //**********************************************************************************************************************
