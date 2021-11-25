@@ -112,6 +112,18 @@ void setup() {
 //**********************************************************************************************************************
 // LOOP
 //**********************************************************************************************************************
+void loop() {
+
+  BPM1(); // Función encargada de recibir el valor del sensor de BPM enviado por el ESP32.
+  // Condición que perimite escribir el valor BPM en la memoria SD al momento de apachar el botón 2.
+  if (digitalRead(btn2) == 0) {
+    delay(150); // Delay de antirrebote
+    writeSD(); // Función encargada de escribri y almacenar el valor BPM en la memoria SD mediante el botón 2.
+    contador = 2;
+    Serial.println(contador);
+    Serial2.println(contador);
+    Sonido2(); // Función que establece el sonido buzzer cuando se lea un valor con el botón
+  }
 //**********************************************************************************************************************
 // Fuinciones
 //**********************************************************************************************************************
