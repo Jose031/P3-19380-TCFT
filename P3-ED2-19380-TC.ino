@@ -115,6 +115,21 @@ void setup() {
 //**********************************************************************************************************************
 // Fuinciones
 //**********************************************************************************************************************
+void BPM1(void) // Función encargada de recibir el valor del sensor de BPM enviado por el ESP32.
+{
+  if (digitalRead(btn1) == 0) { //Condicion que permite enviar la instrucción al ESP32 al momento de presionar el botón 1.
+    delay(150);
+    contador = 1;
+    Serial.println(contador);
+    Serial2.println(contador);
+  }
+  if (Serial2.available() > 0) // Condición que permite verficar si hay bytes disponibles en el buffer de registro
+  {
+    BPM = Serial2.readStringUntil('\n'); //Lectura de valor ADC enviado por el ESP32
+    LCDD(); // Función con la cual se establece el dieseño que tendra la pantalla SD.
+    Sonido1(); // Función que establece el sonido buzzer cuando se lea un valor con el botón 1.
+  }
+}
 //***************************************************************************************************************************************
 // Función para inicializar LCD
 //***************************************************************************************************************************************
