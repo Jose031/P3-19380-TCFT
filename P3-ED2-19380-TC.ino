@@ -130,6 +130,23 @@ void BPM1(void) // Función encargada de recibir el valor del sensor de BPM envi
     Sonido1(); // Función que establece el sonido buzzer cuando se lea un valor con el botón 1.
   }
 }
+void writeSD(void) {
+  //Parametro 1: Archivo a utilizar, 2: Si es escritura o lectura(se puede omitir)
+  archivo = SD.open("data.csv", FILE_WRITE);//.csv es un archivo que se separa por comas
+
+  if (archivo) { // Condición que permite enviar el valor BPM a la memoria SD
+    Serial.print("Se a guardado el Ritmo Cardiaco: ");
+    Serial.println(BPM); // Impresión del valor BPM en el monito
+    archivo.print("Ritmo Cardiaco: ");
+    archivo.println(BPM);
+    //Sonido2(); // Función que establece el sonido buzzer cuando se lea un valor con el botón 2.
+    archivo.close(); // Cerrar el file archivo para que no ocurran cosas extrañas.
+  }
+
+  else {
+    // if the file didn't open, print an error:
+    Serial.println("error opening data.csv");
+  }
 //***************************************************************************************************************************************
 // Función para inicializar LCD
 //***************************************************************************************************************************************
