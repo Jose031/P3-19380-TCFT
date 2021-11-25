@@ -147,6 +147,56 @@ void writeSD(void) {
     // if the file didn't open, print an error:
     Serial.println("error opening data.csv");
   }
+
+}
+void LCDD(void) {
+  LCD_Clear(0xFFFF); // Establecer el fondo de la pantalla
+  // Impresión de texto
+  String text1 = "Signos Vitales:";
+  LCD_Print(text1, 40, 20, 2.5,  0x0000,  0xFFFF);
+  LCD_Print(BPM, 10, 100, 2, 0xFFFF,  0x049F);
+  // Impresión de imagenes Bitmap
+  LCD_Bitmap(0, 210, 32, 22, BTN);
+  LCD_Bitmap(285, 210, 32, 22, BTN);
+  LCD_Bitmap(40, 200, 32, 32, check);
+  LCD_Bitmap(255, 210, 32, 18, GG);
+  LCD_Bitmap(0, 160, 32, 27, ECG2);
+  delay(100);
+  LCD_Bitmap(40, 160, 32, 27, ECG2);
+  delay(200);
+  LCD_Bitmap(80, 160, 32, 27, ECG2);
+  delay(200);
+  LCD_Bitmap(120, 160, 32, 27, ECG2);
+  delay(200);
+  LCD_Bitmap(160, 160, 32, 27, ECG2);
+  delay(200);
+  LCD_Bitmap(200, 160, 32, 27, ECG2);
+  delay(100);
+  LCD_Bitmap(240, 160, 32, 27, ECG2);
+  delay(100);
+  LCD_Bitmap(280, 160, 32, 27, ECG2);
+  delay(100);
+  LCD_Bitmap(320, 160, 32, 27, ECG2);
+  delay(100);
+}
+void Sonido1(void) { // Función que establece el sonido buzzer cuando se lea un valor con el botón 1.
+  tone(buzzerPin, 988, 250);
+  delay(400);
+  tone(buzzerPin, 880, 250);
+  delay(400);
+  tone(buzzerPin, 988, 250);
+  delay(1000);
+}
+void Sonido2(void) { // Función que establece el sonido buzzer cuando se lea un valor con el botón 2.
+  tone(buzzerPin, 988, 250);
+  delay(400);
+  tone(buzzerPin, 880, 250);
+  delay(400);
+  tone(buzzerPin, 784, 1000);
+  delay(1000);
+  tone(buzzerPin, 880, 1000);
+  delay(1000);
+}
 //***************************************************************************************************************************************
 // Función para inicializar LCD
 //***************************************************************************************************************************************
