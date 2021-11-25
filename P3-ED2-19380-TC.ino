@@ -34,8 +34,20 @@
 #include "lcd_registers.h"
 //---------------------------------
 File archivo; // Librería utlizada para crear un archivo en la SD
+//**********************************************************************************************************************
 // Defincion de Pines
 //**********************************************************************************************************************
+// Pines utilizados para los botones de leer y guardad.
+#define btn1 PF_4
+#define btn2 PF_0
+//Pines LCD
+#define LCD_RST PD_0
+#define LCD_CS PD_1
+#define LCD_RS PD_2
+#define LCD_WR PD_3
+#define LCD_RD PE_1
+// Pin utilizado para el buzzer
+int buzzerPin = PC_4;
 //**********************************************************************************************************************
 // Prototipo de Funciones
 //**********************************************************************************************************************
