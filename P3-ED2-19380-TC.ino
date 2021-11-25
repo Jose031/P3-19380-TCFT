@@ -74,6 +74,13 @@ void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[], int
 //**********************************************************************************************************************
 // Variables Globales
 //**********************************************************************************************************************
+String BPM = ""; // Variable con la cual se nombrara el valor enviado por el ESP32.
+int contador = 0; // Variable utilizada para enviar instrucciones al ESP32
+
+//LCD
+int DPINS[] = {PB_0, PB_1, PB_2, PB_3, PB_4, PB_5, PB_6, PB_7};
+extern uint8_t fondo1[]; // definición de arreglo que permite imprimir la portada del diseño de la pantalla LCD.
+
 //**********************************************************************************************************************
 // Configuracion
 //**********************************************************************************************************************
